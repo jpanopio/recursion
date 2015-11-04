@@ -5,4 +5,9 @@
 
 var stringifyJSON = function(obj) {
   // your code goes here
+  var stringJSON = {};
+  for (var property in obj) {
+    if (obj[property] === undefined || typeof obj[property] === "function")
+      continue;
+  }
 };
