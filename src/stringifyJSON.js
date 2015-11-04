@@ -22,7 +22,11 @@ var stringifyJSON = function(obj) {
   }
   return stringJSON;
   */
-  if (obj === undefined || typeof obj === "function" || obj === null)
+  if (typeof obj === "string") {
+    return ('\"' + obj + '\"');
+  }
+
+  if (obj === null)
     return 'null';
 
   if (Array.isArray(obj)) {
@@ -38,12 +42,19 @@ var stringifyJSON = function(obj) {
     return arrayString;
   }
 
-  if (typeof obj === "string") {
-    return ('\"' + obj + '\"');
-  }
-
   if (typeof obj === "object") {
-  }
+    if (_.isEmpty(obj))
+      return '{}';
 
+    var newObj = '{';
+    var propIndex = 0;
+
+    for (var prop in obj) {
+      if (obj[prop] === undefined || typeof obj[prop] === "function")
+        return '{}';  
+      newObj += '\"' + prop + '\":' + stringifyJSON(obj[prop]) + ',';
+    }
+    return (newObj.substring(0, (newObj.length - 1)) + '}');
+  }
   return String(obj);
 };
