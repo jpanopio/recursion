@@ -52,7 +52,7 @@ var stringifyJSON = function(obj) {
     for (var prop in obj) {
       if (obj[prop] === undefined || typeof obj[prop] === "function")
         return '{}';  
-      newObj += '\"' + prop + '\":' + stringifyJSON(obj[prop]) + ',';
+      newObj += stringifyJSON(prop) + ':' + stringifyJSON(obj[prop]) + ',';
     }
     return (newObj.substring(0, (newObj.length - 1)) + '}');
   }
