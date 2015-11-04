@@ -5,23 +5,6 @@
 
 var stringifyJSON = function(obj) {
   // your code goes here
-  /*
-  var stringJSON = {};
-  for (var property in obj) {
-    if (obj[property] === undefined || typeof obj[property] === "function")
-      continue;
-
-    var propertyName = "\"" + property + "\"";
-
-    if (obj[property] != null && typeof obj[property] === "object") {
-      stringJSON[propertyName] = stringifyJSON(obj[property]);
-    }
-    else {
-      stringJSON[propertyName] = obj[property];
-    }
-  }
-  return stringJSON;
-  */
   if (typeof obj === "string") {
     return ('\"' + obj + '\"');
   }
