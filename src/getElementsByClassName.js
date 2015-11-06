@@ -18,8 +18,9 @@ var getElementsByClassName = function(className){
       if (nodes[i].classList != undefined) {
         if (nodes[i].classList.contains(className))
           classElements.push(nodes[i]);
-        checkChildren(nodes[i].childNodes);
+        
       }
+      checkChildren(nodes[i].childNodes);
     }
   };
 };
